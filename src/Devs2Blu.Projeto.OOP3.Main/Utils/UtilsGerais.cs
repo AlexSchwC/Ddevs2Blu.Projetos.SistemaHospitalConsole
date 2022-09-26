@@ -11,7 +11,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
         static Random rd = new Random();
         public static int GeraRandomNum(int min, int max)
         {
-            return rd.Next(min, max+1);
+            return rd.Next(min, max);
         }
     }
 }

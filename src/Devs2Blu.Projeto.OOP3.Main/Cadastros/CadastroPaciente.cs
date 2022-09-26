@@ -29,6 +29,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                 Console.WriteLine("| ---");
                 Console.WriteLine("| --- 0 - Voltar / Sair ---");
                 Int32.TryParse(Console.ReadLine(), out opcao);
+                Console.Clear();
 
                 switch (opcao)
                 {

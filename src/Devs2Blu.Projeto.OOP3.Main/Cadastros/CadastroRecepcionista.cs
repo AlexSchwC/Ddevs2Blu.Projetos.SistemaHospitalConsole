@@ -9,19 +9,23 @@ using System.Threading.Tasks;
 
 namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
 {
-    public class CadastroMedico
+    public class CadastroRecepcionista
     {
+        public CadastroRecepcionista()
+        {
+
+        }
         public void MenuCadastro()
         {
             int opcao;
 
             do
             {
-                Console.WriteLine("| --- Cadastro de Medicos ---");
-                Console.WriteLine("| --- 1 - Lista de Medicos ---");
-                Console.WriteLine("| --- 2 - Cadastrar Medico ---");
-                Console.WriteLine("| --- 3 - Alterar Cadastro Medico ---");
-                Console.WriteLine("| --- 4 - Excluir Medico Cadastrado ---");
+                Console.WriteLine("| --- Cadastro de Recepcionistas ---");
+                Console.WriteLine("| --- 1 - Lista de Recepcionistas ---");
+                Console.WriteLine("| --- 2 - Cadastrar Recepcionistas ---");
+                Console.WriteLine("| --- 3 - Alterar Cadastro Recepcionista ---");
+                Console.WriteLine("| --- 4 - Excluir Recepcionista Cadastrada ---");
                 Console.WriteLine("| ---");
                 Console.WriteLine("| --- 0 - Voltar / Sair ---");
                 Int32.TryParse(Console.ReadLine(), out opcao);
@@ -30,7 +34,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                 switch (opcao)
                 {
                     case (int)MenuGeralEnums.LISTAR:
-                        ListarMedicos();
+                        ListarRecepcionistas();
                         break;
                     default:
                         break;
@@ -39,33 +43,31 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             } while (!opcao.Equals((int)MenuGeralEnums.SAIR));
         }
 
-        public void ListarMedicos()
+        public void ListarRecepcionistas()
         {
             Console.Clear();
-
-            foreach (Medico medico in Program.Mock.ListaMedicos)
+            foreach (Recepcionista recepcionista in Program.Mock.ListaRecepcionistas)
             {
                 Console.WriteLine("-----");
-                Console.WriteLine($"Codigo: {medico.CodigoMedico}");
-                Console.WriteLine($"Nome: {medico.Nome}");
-                Console.WriteLine($"CPF: {medico.CGCCPF}");
-                Console.WriteLine($"CRM: {medico.CRM}");
-                Console.WriteLine($"Especialidade: {medico.Especialidade}");
+                Console.WriteLine($"Codigo: {recepcionista.CodigoRecepcionista}");
+                Console.WriteLine($"Nome: {recepcionista.Nome}");
+                Console.WriteLine($"CPF: {recepcionista.CGCCPF}");
+                Console.WriteLine($"CPF: {recepcionista.Setor}");
                 Console.WriteLine("-----\n");
             }
         }
 
-        public void CadastrarMedico(Mocks mock)
+        public void CadastrarRecepcionista(Mocks mock)
         {
 
         }
 
-        public void AlterarMedico(Mocks mock)
+        public void AlterarRecepcionista(Mocks mock)
         {
 
         }
 
-        public void ExcluirMedico(Mocks mock)
+        public void ExcluirRecepcionista(Mocks mock)
         {
 
         }

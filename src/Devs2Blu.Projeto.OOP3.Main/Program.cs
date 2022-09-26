@@ -19,7 +19,8 @@ namespace Devs2Blu.Projeto.OOP3.Main
             Mock = new Mocks();
             do
             {
-                Console.WriteLine("| ");
+                Console.Clear();
+                Console.WriteLine("| --- - Sistema de Gerenciamento de Clinicas - ---");
                 Console.WriteLine("| --- 1 - Cadastro de Pacientes ---");
                 Console.WriteLine("| --- 2 - Cadastro de Medicos ---");
                 Console.WriteLine("| --- 3 - Cadastro de Recepcionistas ---");
@@ -30,16 +31,21 @@ namespace Devs2Blu.Projeto.OOP3.Main
                 Console.WriteLine("| ---");
                 Console.WriteLine("| --- 0 - Voltar / Sair ---");
                 Int32.TryParse(Console.ReadLine(), out opcao);
+                Console.Clear();
 
                 switch (opcao)
                 {
                     case (int)MainMenuEnums.CAD_PACI:
-                        CadastroPaciente ModuloCadastroPacientes = new CadastroPaciente();
-                        ModuloCadastroPacientes.MenuCadastro();
+                        CadastroPaciente moduloCadastroPacientes = new CadastroPaciente();
+                        moduloCadastroPacientes.MenuCadastro();
                         break;
                     case (int)MainMenuEnums.CAD_MED:
-                        CadastroMedico ModuloCadastroMedicos = new CadastroMedico();
-                        ModuloCadastroMedicos.MenuCadastro();
+                        CadastroMedico moduloCadastroMedicos = new CadastroMedico();
+                        moduloCadastroMedicos.MenuCadastro();
+                        break;
+                    case (int)MainMenuEnums.CAD_RECEP:
+                        CadastroRecepcionista moduloCadastroRecepcionista = new CadastroRecepcionista();
+                        moduloCadastroRecepcionista.MenuCadastro();
                         break;
                     default:
                         break;
