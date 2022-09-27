@@ -32,6 +32,9 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                     case (int)MenuGeralEnums.LISTAR:
                         ListarMedicos();
                         break;
+                    case (int)MenuGeralEnums.CADASTRAR:
+                        CadastrarMedico();
+                        break;
                     default:
                         break;
                 }
@@ -55,17 +58,34 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             }
         }
 
-        public void CadastrarMedico(Mocks mock)
+        public void CadastrarMedico()
+        {
+            Console.Clear();
+            String nome, cpf, especialidade;
+            Int32 codigo = UtilsGerais.GeraRandomNum(10, 99);
+            Int32 crm;
+
+            Console.WriteLine("| --- Cadastro de Medico, siga os passos a seguir: ---");
+            Console.WriteLine("| Informe o nome completo do Médico:");
+            nome = Console.ReadLine();
+            Console.WriteLine("| Informe o CPF do Médico:");
+            cpf = Console.ReadLine();
+            Console.WriteLine("| Informe o CRM do Médico:");
+            Int32.TryParse(Console.ReadLine(), out crm);
+            Console.WriteLine("| Informe a especialidade:");
+            especialidade = Console.ReadLine();
+
+            Medico novoMedico = new Medico(codigo, nome, cpf, crm, especialidade);
+
+            Program.Mock.ListaMedicos.Add(novoMedico);
+        }
+
+        public void AlterarMedico()
         {
 
         }
 
-        public void AlterarMedico(Mocks mock)
-        {
-
-        }
-
-        public void ExcluirMedico(Mocks mock)
+        public void ExcluirMedico()
         {
 
         }

@@ -19,11 +19,13 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
         {
             int opcao;
 
+            Console.Clear();
+
             do
             {
                 Console.WriteLine("| --- Cadastro de Pacientes ---");
                 Console.WriteLine("| --- 1 - Lista de Pacientes ---");
-                Console.WriteLine("| --- 2 - Cadastrar Pacientes ---");
+                Console.WriteLine("| --- 2 - Cadastrar Paciente ---");
                 Console.WriteLine("| --- 3 - Alterar Cadastro Paciente ---");
                 Console.WriteLine("| --- 4 - Excluir Paciente Cadastrado ---");
                 Console.WriteLine("| ---");
@@ -35,6 +37,9 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                 {
                     case (int)MenuGeralEnums.LISTAR:
                         ListarPacientes();
+                        break;
+                    case (int)MenuGeralEnums.CADASTRAR:
+                        CadastrarPaciente();
                         break;
                     default:
                         break;
@@ -58,17 +63,31 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             }
         }
 
-        public void CadastrarPaciente(Mocks mock)
+        public void CadastrarPaciente()
+        {
+            Console.Clear();
+            String nome, cpf, convenio;
+            Int32 codigo = UtilsGerais.GeraRandomNum(10, 99);
+            
+            Console.WriteLine("| --- Cadastro de Paciente, siga os passos a seguir: ---");
+            Console.WriteLine("| Informe o nome completo do Paciente:");
+            nome = Console.ReadLine();
+            Console.WriteLine("| Informe o CPF do Paciente:");
+            cpf = Console.ReadLine();
+            Console.WriteLine("| Qual o convênio do paciente?");
+            convenio = Console.ReadLine();
+
+            Paciente novoPaciente = new Paciente(codigo, nome, cpf, convenio);
+
+            Program.Mock.ListaPacientes.Add(novoPaciente);
+        }
+
+        public void AlterarPaciente()
         {
 
         }
 
-        public void AlterarPaciente(Mocks mock)
-        {
-
-        }
-
-        public void ExcluirPaciente(Mocks mock)
+        public void ExcluirPaciente()
         {
 
         }

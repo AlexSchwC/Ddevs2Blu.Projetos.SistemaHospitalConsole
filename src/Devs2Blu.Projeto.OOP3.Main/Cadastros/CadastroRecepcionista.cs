@@ -19,6 +19,8 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
         {
             int opcao;
 
+            Console.Clear();
+
             do
             {
                 Console.WriteLine("| --- Cadastro de Recepcionistas ---");
@@ -35,6 +37,9 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                 {
                     case (int)MenuGeralEnums.LISTAR:
                         ListarRecepcionistas();
+                        break;
+                    case (int)MenuGeralEnums.CADASTRAR:
+                        CadastrarRecepcionista();
                         break;
                     default:
                         break;
@@ -57,17 +62,31 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             }
         }
 
-        public void CadastrarRecepcionista(Mocks mock)
+        public void CadastrarRecepcionista()
+        {
+            Console.Clear();
+            String nome, cpf, setor;
+            Int32 codigo = UtilsGerais.GeraRandomNum(10, 99);
+
+            Console.WriteLine("| --- Cadastro de Recepcionista, siga os passos a seguir: ---");
+            Console.WriteLine("| Informe o nome completo da Recepcionista:");
+            nome = Console.ReadLine();
+            Console.WriteLine("| Informe o CPF da Recepcionista:");
+            cpf = Console.ReadLine();
+            Console.WriteLine("| Informe o setor:");
+            setor = Console.ReadLine();
+
+            Recepcionista novaRecepcionista = new Recepcionista(codigo, nome, cpf, setor);
+
+            Program.Mock.ListaRecepcionistas.Add(novaRecepcionista);
+        }
+
+        public void AlterarRecepcionista()
         {
 
         }
 
-        public void AlterarRecepcionista(Mocks mock)
-        {
-
-        }
-
-        public void ExcluirRecepcionista(Mocks mock)
+        public void ExcluirRecepcionista()
         {
 
         }
