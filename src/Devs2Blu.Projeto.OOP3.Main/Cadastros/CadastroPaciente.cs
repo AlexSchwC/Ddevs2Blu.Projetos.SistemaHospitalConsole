@@ -3,52 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Devs2Blu.Projeto.OOP3.Main.Cadastros.Interfaces;
 using Devs2Blu.Projeto.OOP3.Main.Utils;
 using Devs2Blu.Projeto.OOP3.Main.Utils.Enums;
+using Devs2Blu.Projeto.OOP3.Models;
 using Devs2Blu.Projeto.OOP3.Models.Model;
 
 namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
 {
-    public class CadastroPaciente
+    public class CadastroPaciente : IMenuCadastro
     {
-        public CadastroPaciente()
+        public Int32 MenuCadastro()
         {
-
+            Int32 opcao;
+            Console.Clear();
+            Console.WriteLine("| --- Cadastro de Pacientes ---");
+            Console.WriteLine("| --- 1 - Lista de Pacientes ---");
+            Console.WriteLine("| --- 2 - Cadastrar Paciente ---");
+            Console.WriteLine("| --- 3 - Alterar Cadastro Paciente ---");
+            Console.WriteLine("| --- 4 - Excluir Paciente Cadastrado ---");
+            Console.WriteLine("| ---");
+            Console.WriteLine("| --- 0 - Voltar / Sair ---");
+            Int32.TryParse(Console.ReadLine(), out opcao);
+            Console.Clear();
+            return opcao;
         }
-        public void MenuCadastro()
+
+        public void Listar()
         {
-            int opcao;
+            ListarPacientes();
+        }
+
+        public void Cadastrar()
+        {
+            Paciente paciente = new Paciente();
+            CadastrarPaciente(paciente);
+        }
+
+        public void Alterar()
+        {
+            Paciente paciente;
+            int codigoPaciente;
 
             Console.Clear();
 
-            do
-            {
-                Console.WriteLine("| --- Cadastro de Pacientes ---");
-                Console.WriteLine("| --- 1 - Lista de Pacientes ---");
-                Console.WriteLine("| --- 2 - Cadastrar Paciente ---");
-                Console.WriteLine("| --- 3 - Alterar Cadastro Paciente ---");
-                Console.WriteLine("| --- 4 - Excluir Paciente Cadastrado ---");
-                Console.WriteLine("| ---");
-                Console.WriteLine("| --- 0 - Voltar / Sair ---");
-                Int32.TryParse(Console.ReadLine(), out opcao);
-                Console.Clear();
+            ListarPacientesByCodeAndName();
+            Console.WriteLine("\n---");
 
-                switch (opcao)
-                {
-                    case (int)MenuGeralEnums.LISTAR:
-                        ListarPacientes();
-                        break;
-                    case (int)MenuGeralEnums.CADASTRAR:
-                        CadastrarPaciente();
-                        break;
-                    default:
-                        break;
-                }
+            Console.WriteLine($"| Informe o código do paciente que deseja alterar: ");
+            Int32.TryParse(Console.ReadLine(), out codigoPaciente);
+            paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente.Equals(codigoPaciente));
 
-            } while (!opcao.Equals((int)MenuGeralEnums.SAIR));
+            AlterarPaciente(paciente);
         }
 
-        public void ListarPacientes()
+        public void Excluir()
+        {
+            Paciente paciente;
+            int codigoPaciente;
+
+            Console.Clear();
+
+            ListarPacientesByCodeAndName();
+            Console.WriteLine("\n---");
+            Console.WriteLine($"| Informe o código do paciente que deseja excluir: ");
+            Int32.TryParse(Console.ReadLine(), out codigoPaciente);
+            paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente.Equals(codigoPaciente));
+
+            ExcluirPaciente(paciente);
+        }
+
+        #region FACADE
+
+        private void ListarPacientes()
         {
             Console.Clear();
 
@@ -61,9 +88,20 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                 Console.WriteLine($"Convenio: {paciente.Convenio}");
                 Console.WriteLine("-----\n");
             }
+            Console.ReadLine();
         }
 
-        public void CadastrarPaciente()
+        private void ListarPacientesByCodeAndName()
+        {
+            Console.Clear();
+
+            foreach (Paciente paciente in Program.Mock.ListaPacientes)
+            {
+                Console.WriteLine($"| Codigo: {paciente.CodigoPaciente} - Nome: {paciente.Nome}");
+            }
+        }
+
+        private void CadastrarPaciente(Paciente paciente)
         {
             Console.Clear();
             String nome, cpf, convenio;
@@ -82,14 +120,19 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             Program.Mock.ListaPacientes.Add(novoPaciente);
         }
 
-        public void AlterarPaciente()
+        private void AlterarPaciente(Paciente paciente)
         {
-
+            
         }
 
-        public void ExcluirPaciente()
+        private void ExcluirPaciente(Paciente paciente)
         {
-
+            Program.Mock.ListaPacientes.Remove(paciente);
+            Console.WriteLine($"| Paciente {paciente.Nome} exluído com sucesso!");
+            Console.ReadLine();
         }
+
+        #endregion
+
     }
 }

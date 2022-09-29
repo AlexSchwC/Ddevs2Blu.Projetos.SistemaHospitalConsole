@@ -29,6 +29,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
             CargaPacientes();
             CargaMedicos();
             CargaRecepcionistas();
+            CargaFornecedores();
         }
 
         public void CargaPacientes()
@@ -59,6 +60,17 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
             {
                 Recepcionista recep = new Recepcionista(i, $"Recepcionista {i}", $"{i}23{i}56{i}891{i}", setores[UtilsGerais.GeraRandomNum(0, 2)]);
                 ListaRecepcionistas.Add(recep);
+            }
+        }
+
+        public void CargaFornecedores()
+        {
+            string[] tipos = new string[3] { "Materiais Médicos", "Orgãos", "Naridrin" };
+
+            for (int i = 1; i <= 5; i++)
+            {
+                Fornecedor fornecedor = new Fornecedor(i, $"Recepcionista {i}", $"{i}23{i}56{i}891{i}", tipos[UtilsGerais.GeraRandomNum(0, 2)]);
+                ListaFornecedores.Add(fornecedor);
             }
         }
     }
