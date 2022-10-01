@@ -47,6 +47,30 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             throw new NotImplementedException();
         }
 
+        public int ExistePessoaByCode()
+        {
+            Fornecedor fornecedor;
+            int codigo;
+            bool primeiraTentativa = true;
+
+            Console.WriteLine("\n---");
+            Console.WriteLine($"| Informe o código do fornecedor que deseja alterar: ");
+
+            do
+            {
+                if (primeiraTentativa.Equals(false))
+                {
+                    Console.WriteLine("| Informe um código válido!");
+                }
+                Int32.TryParse(Console.ReadLine(), out codigo);
+                fornecedor = Program.Mock.ListaFornecedores.Find(p => p.CodigoFornecedor.Equals(codigo));
+                if (primeiraTentativa.Equals(true)) primeiraTentativa = false;
+            } while (fornecedor == null);
+            return codigo;
+        }
+
+        #region FACADE
+
         private void ListarFornecedores()
         {
             Console.Clear();
@@ -90,5 +114,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
         {
 
         }
+
+        #endregion
     }
 }

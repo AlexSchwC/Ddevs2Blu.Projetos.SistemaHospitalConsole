@@ -6,49 +6,85 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Devs2Blu.Projeto.OOP3.Main.Cadastros.Interfaces;
 
 namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
 {
-    public class CadastroRecepcionista
+    public class CadastroRecepcionista : IMenuCadastro
     {
-        public CadastroRecepcionista()
-        {
-
-        }
-        public void MenuCadastro()
+        public Int32 MenuCadastro()
         {
             int opcao;
 
             Console.Clear();
+            Console.WriteLine("| --- Cadastro de Recepcionistas ---");
+            Console.WriteLine("| --- 1 - Lista de Recepcionistas ---");
+            Console.WriteLine("| --- 2 - Cadastrar Recepcionistas ---");
+            Console.WriteLine("| --- 3 - Alterar Cadastro Recepcionista ---");
+            Console.WriteLine("| --- 4 - Excluir Recepcionista Cadastrada ---");
+            Console.WriteLine("| ---");
+            Console.WriteLine("| --- 0 - Voltar / Sair ---");
+            Int32.TryParse(Console.ReadLine(), out opcao);
+            Console.Clear();
+
+            switch (opcao)
+            {
+                case (int)MenuGeralEnums.LISTAR:
+                    ListarRecepcionistas();
+                    break;
+                case (int)MenuGeralEnums.CADASTRAR:
+                    CadastrarRecepcionista();
+                    break;
+                default:
+                    break;
+            }
+            return opcao;
+        }
+        public void Listar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Cadastrar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Alterar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Excluir()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int ExistePessoaByCode()
+        {
+            Recepcionista recepcionista;
+            int codigo;
+            bool primeiraTentativa = true;
+
+            Console.WriteLine("\n---");
+            Console.WriteLine($"| Informe o código do(a) recepcionista que deseja alterar: ");
 
             do
             {
-                Console.WriteLine("| --- Cadastro de Recepcionistas ---");
-                Console.WriteLine("| --- 1 - Lista de Recepcionistas ---");
-                Console.WriteLine("| --- 2 - Cadastrar Recepcionistas ---");
-                Console.WriteLine("| --- 3 - Alterar Cadastro Recepcionista ---");
-                Console.WriteLine("| --- 4 - Excluir Recepcionista Cadastrada ---");
-                Console.WriteLine("| ---");
-                Console.WriteLine("| --- 0 - Voltar / Sair ---");
-                Int32.TryParse(Console.ReadLine(), out opcao);
-                Console.Clear();
-
-                switch (opcao)
+                if (primeiraTentativa.Equals(false))
                 {
-                    case (int)MenuGeralEnums.LISTAR:
-                        ListarRecepcionistas();
-                        break;
-                    case (int)MenuGeralEnums.CADASTRAR:
-                        CadastrarRecepcionista();
-                        break;
-                    default:
-                        break;
+                    Console.WriteLine("| Informe um código válido!");
                 }
-
-            } while (!opcao.Equals((int)MenuGeralEnums.SAIR));
+                Int32.TryParse(Console.ReadLine(), out codigo);
+                recepcionista = Program.Mock.ListaRecepcionistas.Find(p => p.CodigoRecepcionista.Equals(codigo));
+                if (primeiraTentativa.Equals(true)) primeiraTentativa = false;
+            } while (recepcionista == null);
+            return codigo;
         }
 
-        public void ListarRecepcionistas()
+        #region FACADE 
+
+        static void ListarRecepcionistas()
         {
             Console.Clear();
             foreach (Recepcionista recepcionista in Program.Mock.ListaRecepcionistas)
@@ -62,7 +98,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             }
         }
 
-        public void CadastrarRecepcionista()
+        static void CadastrarRecepcionista()
         {
             Console.Clear();
             String nome, cpf, setor;
@@ -81,14 +117,16 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             Program.Mock.ListaRecepcionistas.Add(novaRecepcionista);
         }
 
-        public void AlterarRecepcionista()
+        static void AlterarRecepcionista()
         {
 
         }
 
-        public void ExcluirRecepcionista()
+        static void ExcluirRecepcionista()
         {
 
         }
+
+        #endregion
     }
 }

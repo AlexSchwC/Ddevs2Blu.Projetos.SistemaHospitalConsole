@@ -51,7 +51,29 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             Medico medico = new Medico();
             ExcluirMedico(medico);
         }
-        
+
+        public int ExistePessoaByCode()
+        {
+            Medico medico;
+            int codigo;
+            bool primeiraTentativa = true;
+
+            Console.WriteLine("\n---");
+            Console.WriteLine($"| Informe o código do médico que deseja alterar: ");
+
+            do
+            {
+                if (primeiraTentativa.Equals(false))
+                {
+                    Console.WriteLine("| Informe um código válido!");
+                }
+                Int32.TryParse(Console.ReadLine(), out codigo);
+                medico = Program.Mock.ListaMedicos.Find(p => p.CodigoMedico.Equals(codigo));
+                if (primeiraTentativa.Equals(true)) primeiraTentativa = false;
+            } while (medico == null);
+            return codigo;
+        }
+
         #region FACADE
 
         private void ListarMedicos()

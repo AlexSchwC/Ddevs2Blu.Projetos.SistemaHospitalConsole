@@ -54,6 +54,7 @@
     <Compile Include="Utils\Enums\MenuEnums.cs" />
     <Compile Include="Utils\Mocks.cs" />
     <Compile Include="Utils\UtilsGerais.cs" />
+    <Compile Include="Utils\ValidacoesInputs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -34,5 +34,35 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
         {
             throw new System.NotImplementedException();
         }
+
+        int IMenuCadastro.MenuCadastro()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IMenuCadastro.Listar()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IMenuCadastro.Cadastrar()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IMenuCadastro.Alterar()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IMenuCadastro.Excluir()
+        {
+            throw new NotImplementedException();
+        }
+
+        int IMenuCadastro.ExistePessoaByCode()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

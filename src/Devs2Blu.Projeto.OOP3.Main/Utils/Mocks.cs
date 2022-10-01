@@ -65,7 +65,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
 
         public void CargaFornecedores()
         {
-            string[] tipos = new string[3] { "Materiais Médicos", "Orgãos", "Naridrin" };
+            string[] tipos = new string[3] { "Equipamentos Médicos", "Orgãos", "Naridrin" };
 
             for (int i = 1; i <= 5; i++)
             {

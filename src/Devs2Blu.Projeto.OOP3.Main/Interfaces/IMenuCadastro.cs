@@ -14,5 +14,6 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros.Interfaces
         void Cadastrar();
         void Alterar();
         void Excluir();
+        int ExistePessoaByCode();
     }
 }

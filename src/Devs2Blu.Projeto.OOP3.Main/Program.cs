@@ -17,7 +17,7 @@ namespace Devs2Blu.Projeto.OOP3.Main
         static void Main(string[] args)
         {
             Int32 opcao = 0, opcaoMenuCadastros = 0;
-            IMenuCadastro menuCadastros = new CadastroPadrao();
+            IMenuCadastro menuCadastros;
             Mock = new Mocks();
 
             do
@@ -25,19 +25,20 @@ namespace Devs2Blu.Projeto.OOP3.Main
 
                 if (opcaoMenuCadastros.Equals((int)MainMenuEnums.SAIR))
                 {
-                        Console.Clear();
-                        Console.WriteLine("| --- - Sistema de Gerenciamento de Clinicas - ---");
-                        Console.WriteLine("| --- 1 - Cadastro de Pacientes ---");
-                        Console.WriteLine("| --- 2 - Cadastro de Medicos ---");
-                        Console.WriteLine("| --- 3 - Cadastro de Recepcionistas ---");
-                        Console.WriteLine("| --- 4 - Cadastro de Fornecedores ---");
-                        Console.WriteLine("| --- 5 - Agenda ---");
-                        Console.WriteLine("| --- 6 - Prontuário ---");
-                        Console.WriteLine("| --- 7 - Financeiro ---");
-                        Console.WriteLine("| ---");
-                        Console.WriteLine("| --- 0 - Voltar / Sair ---");
-                        Int32.TryParse(Console.ReadLine(), out opcao);
-                        Console.Clear();
+                    Console.Clear();
+                    Console.WriteLine("|  - Sistema de Gerenciamento de Clinicas -  |");
+                    Console.WriteLine("|============================================|");
+                    Console.WriteLine("| --- 1 - Cadastro de Pacientes              |");
+                    Console.WriteLine("| --- 2 - Cadastro de Medicos                |");
+                    Console.WriteLine("| --- 3 - Cadastro de Recepcionistas         |");
+                    Console.WriteLine("| --- 4 - Cadastro de Fornecedores           |");
+                    Console.WriteLine("| --- 5 - Agenda                             |");
+                    Console.WriteLine("| --- 6 - Prontuário                         |");
+                    Console.WriteLine("| --- 7 - Financeiro                         |");
+                    Console.WriteLine("| ---                                        |");
+                    Console.WriteLine("| --- 0 - Sair                               |");
+                    Int32.TryParse(Console.ReadLine(), out opcao);
+                    Console.Clear();
                 }
 
                 switch (opcao)
@@ -51,6 +52,8 @@ namespace Devs2Blu.Projeto.OOP3.Main
                         opcaoMenuCadastros = menuCadastros.MenuCadastro();
                         break;
                     case (int)MainMenuEnums.CAD_RECEP:
+                        menuCadastros = new CadastroRecepcionista();
+                        opcaoMenuCadastros = menuCadastros.MenuCadastro();
                         break;
                     case (int)MainMenuEnums.CAD_FORN:
                         menuCadastros = new CadastroFornecedor();
@@ -83,7 +86,6 @@ namespace Devs2Blu.Projeto.OOP3.Main
 
 
             } while (!opcao.Equals((int)MainMenuEnums.SAIR));
-
         }
     }
 }
