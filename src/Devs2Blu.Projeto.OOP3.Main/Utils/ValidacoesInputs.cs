@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,6 +14,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
         public static Regex rxOnlyLetters = new Regex("[^a-zA-Z]");
         public static Regex rxValidaCPF = new Regex("([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2})");
         public static Regex rxValidaCNPJ = new Regex("([0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})");
+        public static Regex rxValidaCRM = new Regex("([0-9]{6})");
 
         public static string inputNotNullSRT(string mensagem)
         {
@@ -60,5 +62,12 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
             }
             return false;
         }
+
+        //public static BooleanSwitch validaCRM(int crm)
+        //{
+        //    if (rxValidaCRM.IsMatch(crm) {
+
+        //    }
+        //}
     }
 }

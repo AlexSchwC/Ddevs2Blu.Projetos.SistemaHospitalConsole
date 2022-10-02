@@ -142,7 +142,6 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             Console.ReadLine();
         }
 
-
         private void CadastrarPaciente(Paciente paciente)
         {
             Program.Mock.ListaPacientes.Add(paciente);
