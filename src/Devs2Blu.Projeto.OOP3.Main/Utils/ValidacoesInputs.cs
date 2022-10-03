@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Devs2Blu.Projeto.OOP3.Main.Utils
 {
-    static class ValidacoesInputs
+    public static class ValidacoesInputs
     {
         public static Regex rxOnlyLettersAndSpace = new Regex("[^ a-zA-Z]");
         public static Regex rxOnlyLetters = new Regex("[^a-zA-Z]");
@@ -63,11 +63,13 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
             return false;
         }
 
-        //public static BooleanSwitch validaCRM(int crm)
-        //{
-        //    if (rxValidaCRM.IsMatch(crm) {
+        public static bool validaCRM(int crm)
+        {
+            string crmSTR = crm.ToString();
+            if (rxValidaCRM.IsMatch(crmSTR)) { return false; }
 
-        //    }
-        //}
+            Console.WriteLine("| CRM em formato inválido!");
+            return true;
+        }
     }
 }

@@ -63,9 +63,12 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             {
                 cpf = ValidacoesInputs.inputNotNullSRT("| Informe o CPF do médico:");
             } while (!ValidacoesInputs.validaCPF(cpf));
+            cpf = UtilsGerais.PadronizaCPF(cpf);
 
-            //Implementar uma validação de CRM depois...
-            Int32.TryParse(ValidacoesInputs.inputNotNullSRT("| Informe o CRM (6 Dígitos):"), out crm);
+            do
+            {
+                Int32.TryParse(ValidacoesInputs.inputNotNullSRT("| Informe o CRM (6 Dígitos):"), out crm);
+            } while (ValidacoesInputs.validaCRM(crm));
 
             especialidade = ValidacoesInputs.inputNotNullSRT("| Qual a especialidade do médico ?");
 
@@ -190,6 +193,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                         {
                             medico.CGCCPF = ValidacoesInputs.inputNotNullSRT("| Informe o novo CPF:");
                         } while (!ValidacoesInputs.validaCPF(medico.CGCCPF));
+                        medico.CGCCPF = UtilsGerais.PadronizaCPF(medico.CGCCPF);
                         break;
                     case 3:
                         Console.WriteLine("| Alterando Especialidade...");

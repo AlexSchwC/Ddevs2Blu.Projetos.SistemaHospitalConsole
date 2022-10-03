@@ -23,7 +23,7 @@ namespace Devs2Blu.Projeto.OOP3.Models.Model
             CGCCPF = cnpj;
             TipoFornecedor = tipoFornecedor;
             Random rd = new Random();
-            CodigoFornecedor = Int32.Parse($"{Codigo}{rd.Next(1000, 1100)}");
+            CodigoFornecedor = Int32.Parse($"{Codigo}{rd.Next(1000, 9999)}");
         }
     }
 }

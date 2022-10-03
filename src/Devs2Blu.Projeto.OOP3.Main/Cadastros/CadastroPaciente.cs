@@ -62,6 +62,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             {
                 cpf = ValidacoesInputs.inputNotNullSRT("| Informe o CPF do Paciente:");
             } while (!ValidacoesInputs.validaCPF(cpf));
+            cpf = UtilsGerais.PadronizaCPF(cpf);
 
             convenio = ValidacoesInputs.inputNotNullSRT("| Qual o convênio do paciente?");
 
@@ -185,6 +186,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                         {
                             paciente.CGCCPF = ValidacoesInputs.inputNotNullSRT("| Informe o novo CPF:");
                         } while (!ValidacoesInputs.validaCPF(paciente.CGCCPF));
+                        paciente.CGCCPF = UtilsGerais.PadronizaCPF(paciente.CGCCPF);
                         break;
                     case 3:
                         Console.WriteLine("| Alterando Convênio...");

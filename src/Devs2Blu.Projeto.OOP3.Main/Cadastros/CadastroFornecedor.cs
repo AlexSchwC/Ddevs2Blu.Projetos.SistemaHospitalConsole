@@ -62,6 +62,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             {
                 cnpj = ValidacoesInputs.inputNotNullSRT("| Informe o CNPJ do Fornecedor:");
             } while (!ValidacoesInputs.validaCNPJ(cnpj));
+            cnpj = UtilsGerais.PadronizaCNPJ(cnpj);
 
             tipo = ValidacoesInputs.inputNotNullSRT("| Qual o tipo do Fornecedor?");
 
@@ -182,6 +183,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                         {
                             fornecedor.CGCCPF = ValidacoesInputs.inputNotNullSRT("| Informe o novo CNPJ:");
                         } while (!ValidacoesInputs.validaCPF(fornecedor.CGCCPF));
+                        fornecedor.CGCCPF = UtilsGerais.PadronizaCNPJ(fornecedor.CGCCPF);
                         break;
                     case 3:
                         Console.WriteLine("| Alterando Tipo...");

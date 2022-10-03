@@ -34,10 +34,10 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
 
         public void CargaPacientes()
         {
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 9; i++)
             {
-                Paciente xoxinho = new Paciente(i, $"Paciente {i}", $"{i}23{i}56{i}891{i}", "Unimed");
-                ListaPacientes.Add(xoxinho);
+                Paciente paciente = new Paciente(i, $"Paciente {i}", $"{i}23.{i}56.{i}89-1{i}", "Unimed");
+                ListaPacientes.Add(paciente);
             }
         }
 
@@ -47,7 +47,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
             
             for (int i = 1; i <= 5; i++)
             {
-                Medico medic = new Medico(i, $"Medico {i}", $"{i}23{i}56{i}891{i}", UtilsGerais.GeraRandomNum(1000, 9999), especialidades[UtilsGerais.GeraRandomNum(0, 2)]);
+                Medico medic = new Medico(i, $"Medico {i}", $"{i}23.{i}56.{i}89-1{i}", UtilsGerais.GeraRandomNum(1000, 9999), especialidades[UtilsGerais.GeraRandomNum(0, 2)]);
                 ListaMedicos.Add(medic);
             }
         }
@@ -58,7 +58,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
 
             for (int i = 1; i <= 5; i++)
             {
-                Recepcionista recep = new Recepcionista(i, $"Recepcionista {i}", $"{i}23{i}56{i}891{i}", setores[UtilsGerais.GeraRandomNum(0, 2)]);
+                Recepcionista recep = new Recepcionista(i, $"Recepcionista {i}", $"{i}23.{i}56.{i}89-1{i}", setores[UtilsGerais.GeraRandomNum(0, 2)]);
                 ListaRecepcionistas.Add(recep);
             }
         }
@@ -69,7 +69,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
 
             for (int i = 1; i <= 5; i++)
             {
-                Fornecedor fornecedor = new Fornecedor(i, $"Recepcionista {i}", $"{i}23{i}56{i}891{i}", tipos[UtilsGerais.GeraRandomNum(0, 2)]);
+                Fornecedor fornecedor = new Fornecedor(i, $"Recepcionista {i}", $"{i}2.3{i}5.6{i}8/0001-{UtilsGerais.GeraRandomNum(10, 99)}", tipos[UtilsGerais.GeraRandomNum(0, 2)]);
                 ListaFornecedores.Add(fornecedor);
             }
         }

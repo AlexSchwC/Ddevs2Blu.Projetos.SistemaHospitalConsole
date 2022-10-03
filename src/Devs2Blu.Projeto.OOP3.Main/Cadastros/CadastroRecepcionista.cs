@@ -61,6 +61,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             {
                 cpf = ValidacoesInputs.inputNotNullSRT("| Informe o CPF do(a) Recepcionista:");
             } while (!ValidacoesInputs.validaCPF(cpf));
+            cpf = UtilsGerais.PadronizaCPF(cpf);
 
             setor = ValidacoesInputs.inputNotNullSRT("| Qual o setor do(a) Recepcionista?");
 
@@ -181,6 +182,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                         {
                             recepcionista.CGCCPF = ValidacoesInputs.inputNotNullSRT("| Informe o novo CPF:");
                         } while (!ValidacoesInputs.validaCPF(recepcionista.CGCCPF));
+                        recepcionista.CGCCPF = UtilsGerais.PadronizaCPF(recepcionista.CGCCPF);
                         break;
                     case 3:
                         Console.WriteLine("| Alterando Setor...");
