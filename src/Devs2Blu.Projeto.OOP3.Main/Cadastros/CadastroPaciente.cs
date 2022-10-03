@@ -51,23 +51,27 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             String nome, cpf, convenio;
             Int32 codigo = UtilsGerais.GeraRandomNum(10, 99);
 
-            Console.WriteLine("| --- Cadastro de Paciente, siga os passos a seguir:     |");
+            Console.WriteLine("| --- Cadastro de Paciente, siga os passos a seguir:");
 
             do
             {
-                nome = ValidacoesInputs.inputNotNullSRT("| Informe o nome completo do Paciente:                   |");
+                nome = ValidacoesInputs.inputNotNullSRT("| Informe o nome completo do Paciente:");
             } while (ValidacoesInputs.validaNome(nome));
 
             do
             {
-                cpf = ValidacoesInputs.inputNotNullSRT("| Informe o CPF do Paciente:                             |");
-            } while (ValidacoesInputs.validaCPF(cpf));
+                cpf = ValidacoesInputs.inputNotNullSRT("| Informe o CPF do Paciente:");
+            } while (!ValidacoesInputs.validaCPF(cpf));
 
-            convenio = ValidacoesInputs.inputNotNullSRT("| Qual o convênio do paciente ?                          |");
+            convenio = ValidacoesInputs.inputNotNullSRT("| Qual o convênio do paciente?");
 
             Paciente novoPaciente = new Paciente(codigo, nome, cpf, convenio);
 
             CadastrarPaciente(novoPaciente);
+
+            Console.WriteLine($"\n| Paciente(a) {novoPaciente.Nome} cadastrado(a) com sucesso!");
+            Console.WriteLine("| Pressione qualquer tecla para continuar...");
+            Console.ReadLine();
         }
 
         public void Alterar()
@@ -81,9 +85,11 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
 
             // Esse trecho abaixo se repete ainda na função Excluir() também. Poderia melhorar (talvez).
             codigoPaciente = ExistePessoaByCode();
-            paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente.Equals(codigoPaciente));
-
-            AlterarPaciente(paciente);
+            if (codigoPaciente != (int)MenuGeralEnums.SAIR)
+            {
+                paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente.Equals(codigoPaciente));
+                AlterarPaciente(paciente);
+            }
         }
 
         public void Excluir()
@@ -96,9 +102,11 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
             ListarPacientesByCodeAndName();
 
             codigoPaciente = ExistePessoaByCode();
-            paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente.Equals(codigoPaciente));
-
-            ExcluirPaciente(paciente);
+            if (codigoPaciente != (int)MenuGeralEnums.SAIR)
+            {
+                paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente.Equals(codigoPaciente));
+                ExcluirPaciente(paciente);
+            }
         }
 
         public int ExistePessoaByCode()
@@ -109,17 +117,17 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
 
             Console.WriteLine("\n---");
             Console.WriteLine($"| Informe o código do paciente que deseja alterar: ");
+            Console.WriteLine("| Ou informe 0 para SAIR");
 
             do
             {
-                if (primeiraTentativa.Equals(false))
-                {
-                    Console.WriteLine("| Informe um código válido!");
-                }
+                if (primeiraTentativa.Equals(false)) { Console.WriteLine("| Informe um código válido!"); }
+                    
                 Int32.TryParse(Console.ReadLine(), out codigo);
                 paciente = Program.Mock.ListaPacientes.Find(p => p.CodigoPaciente.Equals(codigo));
-                if (primeiraTentativa.Equals(true)) primeiraTentativa = false;
-            } while (paciente == null);
+
+                if (primeiraTentativa.Equals(true)) { primeiraTentativa = false; }
+            } while (paciente == null && codigo != 0);
             return codigo;
         }
 
@@ -176,7 +184,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Cadastros
                         do
                         {
                             paciente.CGCCPF = ValidacoesInputs.inputNotNullSRT("| Informe o novo CPF:");
-                        } while (ValidacoesInputs.validaCPF(paciente.CGCCPF));
+                        } while (!ValidacoesInputs.validaCPF(paciente.CGCCPF));
                         break;
                     case 3:
                         Console.WriteLine("| Alterando Convênio...");

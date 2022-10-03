@@ -36,7 +36,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
 
         public static bool validaCPF(string cpf) 
         {
-            if (rxValidaCPF.IsMatch(cpf)) {
+            if (!rxValidaCPF.IsMatch(cpf)) {
                 Console.WriteLine("| O CPF esta em formato inválido, insira novamente...");
                 return false;
             }
@@ -45,7 +45,7 @@ namespace Devs2Blu.Projeto.OOP3.Main.Utils
 
         public static bool validaCNPJ(string cnpj)
         {
-            if (rxValidaCNPJ.IsMatch(cnpj))
+            if (!rxValidaCNPJ.IsMatch(cnpj))
             {
                 Console.WriteLine("| O CNPJ esta em formato inválido, insira novamente...");
                 return false;
